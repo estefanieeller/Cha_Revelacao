@@ -15,9 +15,8 @@
             min-height: 100vh;
             margin: 0;
             
-            /* --- FUNDO BRANCO ATRÁS DA FOTO --- */
             background-color: #ffffff; 
-            background-image: url('foto.jpg'); /* Coloque o nome da foto dos pais aqui */
+            background-image: url('foto.jpg'); 
             background-size: cover; 
             background-position: center; 
             background-attachment: fixed; 
@@ -27,10 +26,8 @@
         .container { 
             max-width: 550px; 
             margin: auto; 
-            
             background: rgba(255, 255, 255, 0.45); 
             backdrop-filter: blur(4px); 
-            
             padding: 40px 30px; 
             border-radius: 20px; 
             box-shadow: 0px 10px 30px rgba(0,0,0,0.25); 
@@ -85,7 +82,7 @@
             border-color: #81C784; 
         }
 
-        /* Mensagem de agradecimento dinâmica */
+        /* Mensagens dinâmicas */
         .msg-agradecimento {
             padding: 15px;
             border-radius: 15px;
@@ -93,14 +90,8 @@
             margin-bottom: 20px;
             display: none; 
         }
-        .msg-verde {
-            background-color: rgba(168, 230, 207, 0.9);
-            color: #2D5A3F;
-        }
-        .msg-lilas {
-            background-color: rgba(212, 178, 216, 0.9);
-            color: #5A2D5C;
-        }
+        .msg-verde { background-color: rgba(168, 230, 207, 0.9); color: #2D5A3F; }
+        .msg-lilas { background-color: rgba(212, 178, 216, 0.9); color: #5A2D5C; }
 
         .btn { 
             padding: 15px 30px; 
@@ -134,113 +125,69 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .btn-entrar:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
+        .btn-entrar:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
 
-        .btn-voltar {
-            background-color: #6c757d;
-            font-size: 15px;
-            padding: 10px 20px;
-            margin-top: 25px;
-            border-radius: 20px;
-        }
-        .btn-voltar:hover {
-            background-color: #5a6268;
-        }
+        .btn-voltar { background-color: #6c757d; font-size: 15px; padding: 10px 20px; margin-top: 25px; border-radius: 20px; }
+        .btn-voltar:hover { background-color: #5a6268; }
 
-        .btn-boy { 
-            background-color: #A8E6CF; 
-            color: #2D5A3F; 
-            box-shadow: 0 4px 15px rgba(168, 230, 207, 0.5);
-        }
-        .btn-boy:hover:not(:disabled) { 
-            background-color: #88DBB3; 
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(168, 230, 207, 0.7);
-        }
+        .btn-boy { background-color: #A8E6CF; color: #2D5A3F; box-shadow: 0 4px 15px rgba(168, 230, 207, 0.5); }
+        .btn-boy:hover:not(:disabled) { background-color: #88DBB3; transform: scale(1.05); box-shadow: 0 6px 20px rgba(168, 230, 207, 0.7); }
         
-        .btn-girl { 
-            background-color: #D4B2D8; 
-            color: #5A2D5C; 
-            box-shadow: 0 4px 15px rgba(212, 178, 216, 0.5);
-        }
-        .btn-girl:hover:not(:disabled) { 
-            background-color: #C39CC7; 
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(212, 178, 216, 0.7);
-        }
+        .btn-girl { background-color: #D4B2D8; color: #5A2D5C; box-shadow: 0 4px 15px rgba(212, 178, 216, 0.5); }
+        .btn-girl:hover:not(:disabled) { background-color: #C39CC7; transform: scale(1.05); box-shadow: 0 6px 20px rgba(212, 178, 216, 0.7); }
 
-        .results { 
-            margin-top: 40px; 
-            font-size: 18px; 
-            color: #222;
-            font-weight: 600;
-        }
-        .placar-title {
-            font-weight: 600;
-            font-size: 1.3em;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
-        }
-        .bar-container { 
-            display: flex; 
-            height: 35px; 
-            border-radius: 20px; 
-            overflow: hidden; 
-            margin-top: 20px; 
-            background: rgba(255, 255, 255, 0.7); 
-            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .bar-boy { 
-            background-color: #A8E6CF; 
-            width: 50%; 
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        .bar-girl { 
-            background-color: #D4B2D8; 
-            width: 50%; 
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
+        .results { margin-top: 40px; font-size: 18px; color: #222; font-weight: 600; }
+        .placar-title { font-weight: 600; font-size: 1.3em; margin-bottom: 10px; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8); }
+        
+        .bar-container { display: flex; height: 35px; border-radius: 20px; overflow: hidden; margin-top: 20px; background: rgba(255, 255, 255, 0.7); box-shadow: inset 0 2px 5px rgba(0,0,0,0.1); }
+        .bar-boy { background-color: #A8E6CF; width: 50%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .bar-girl { background-color: #D4B2D8; width: 50%; transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        .historico-votos, .historico-recados {
+        .historico-votos, .historico-recados, .mural-fotos {
             margin-top: 40px;
             background: rgba(255, 255, 255, 0.75); 
             padding: 20px;
             border-radius: 15px;
             text-align: left;
-            max-height: 250px;
+            max-height: 350px;
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .historico-votos h3, .historico-recados h3 {
-            margin-top: 0;
-            font-family: 'Fredoka', sans-serif;
-            text-align: center;
-            color: #333;
-        }
-        .historico-votos ul, .historico-recados ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .historico-votos li, .historico-recados li {
-            padding: 10px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 15px;
-            color: #333;
-        }
-        .historico-recados li strong {
-            color: #5A2D5C;
-            display: block;
-            margin-bottom: 3px;
-        }
-        .historico-votos li:last-child, .historico-recados li:last-child {
-            border-bottom: none;
-        }
+        .historico-votos h3, .historico-recados h3, .mural-fotos h3 { margin-top: 0; font-family: 'Fredoka', sans-serif; text-align: center; color: #333; }
+        .historico-votos ul, .historico-recados ul { list-style: none; padding: 0; margin: 0; }
+        .historico-votos li, .historico-recados li { padding: 10px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); font-size: 15px; color: #333; }
+        .historico-recados li strong { color: #5A2D5C; display: block; margin-bottom: 3px; }
+        .historico-votos li:last-child, .historico-recados li:last-child { border-bottom: none; }
         .cor-menino { color: #2D5A3F; font-weight: bold; }
         .cor-menina { color: #5A2D5C; font-weight: bold; }
+
+        /* Moldura estilo Polaroid / Instax */
+        .instax-card {
+            background-color: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            border-radius: 2px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 90%;
+            max-width: 250px;
+            text-align: center;
+        }
+        .instax-card img {
+            width: 100%;
+            height: auto;
+            background-color: #eee;
+            display: block;
+        }
+        .instax-legenda {
+            font-family: 'Poppins', sans-serif;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.2;
+        }
+        .instax-autor { font-size: 12px; color: #777; margin-top: 5px; }
+
     </style>
 </head>
 <body>
@@ -253,6 +200,7 @@
     
     <button class="btn btn-entrar" id="btn-ir-votacao">Votar 💚💜</button>
     <button class="btn btn-entrar" id="btn-ir-recados">Deixar Recadinho 💌</button>
+    <button class="btn btn-entrar" id="btn-ir-fotos">Câmera Instax 📸</button>
 </div>
 
 <!-- TELA 2: DASHBOARD DE VOTAÇÃO -->
@@ -305,9 +253,44 @@
 
     <div class="historico-recados">
         <h3>Mural de Mensagens 💌</h3>
-        <ul id="lista-recados">
-            <!-- Os recados vão aparecer aqui -->
-        </ul>
+        <ul id="lista-recados"></ul>
+    </div>
+
+    <button class="btn btn-voltar" onclick="voltarAoMenu()">⬅ Voltar ao Menu</button>
+</div>
+
+<!-- TELA 4: CÂMERA INSTAX -->
+<div class="container" id="tela-fotos" style="display: none;">
+    <h2>Câmera Instax 📸</h2>
+    <p class="subtitle">Tire uma foto agora para o nosso mural!</p>
+
+    <div id="area-tirar-foto">
+        <input type="text" id="nome-foto" class="input-nome" placeholder="Seu Nome" required>
+        <br>
+        <input type="text" id="legenda-foto" class="input-nome" placeholder="Legenda (ex: Lindos!)">
+        <br>
+        
+        <!-- Botão especial que força a abrir a câmera do celular -->
+        <label for="input-camera" class="btn btn-entrar" id="label-camera" style="cursor: pointer; display: inline-block;">
+            Abrir Câmera 📷
+        </label>
+        <input type="file" id="input-camera" accept="image/*" capture="environment" style="display: none;">
+        
+        <!-- Área que mostra a foto tirada antes de postar -->
+        <div id="preview-container" style="display: none; margin-top: 15px;">
+            <div class="instax-card" style="margin: 0 auto;">
+                <img id="foto-preview">
+            </div>
+            <br>
+            <button class="btn btn-boy" id="btn-enviar-foto" style="margin-top:10px;">Postar Foto ✨</button>
+            <button class="btn btn-girl" id="btn-cancelar-foto" style="margin-top:10px; background-color:#ff9999; color:white;">Descartar 🗑️</button>
+        </div>
+    </div>
+
+    <div class="mural-fotos">
+        <h3>Mural da Festa 🖼️</h3>
+        <!-- As fotos vão aparecer centralizadas aqui dentro -->
+        <div id="lista-fotos" style="text-align: center; margin-top: 15px;"></div>
     </div>
 
     <button class="btn btn-voltar" onclick="voltarAoMenu()">⬅ Voltar ao Menu</button>
@@ -315,7 +298,8 @@
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getFirestore, doc, onSnapshot, setDoc, updateDoc, increment, getDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    // Adicionado "collection" e "addDoc" na importação para suportar o mural de fotos sem travar o banco
+    import { getFirestore, doc, onSnapshot, setDoc, updateDoc, increment, getDoc, arrayUnion, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyBRhIu1b6ltYiJD1EhWTS3F80g8E3Zchzc",
@@ -330,6 +314,7 @@
     const db = getFirestore(app);
     
     const docRef = doc(db, "votacao", "placar_v6");
+    const fotosRef = collection(db, "mural_fotos_v1"); // Coleção separada só para fotos!
 
     async function inicializarBanco() {
         const snap = await getDoc(docRef);
@@ -339,7 +324,7 @@
     }
     inicializarBanco();
 
-    // TRAVA DE SEGURANÇA NA INICIALIZAÇÃO DE VOTAÇÃO
+    // TRAVA DE SEGURANÇA NA INICIALIZAÇÃO
     if (localStorage.getItem('ja_votou_cha_revelacao')) {
         document.getElementById('area-votacao').style.display = 'none';
         const msgDiv = document.getElementById('msg-agradecimento');
@@ -351,30 +336,45 @@
         } else {
             msgDiv.classList.add('msg-lilas');
         }
-
-        // Altera o botão do menu para "Ver Placar" caso já tenha votado
         document.getElementById('btn-ir-votacao').innerText = "Ver Placar 📜";
     }
 
-    // NAVEGAÇÃO
-    document.getElementById('btn-ir-votacao').addEventListener('click', () => {
+    // NAVEGAÇÃO ENTRE AS ABAS
+    function dispararConfetes() {
         confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ['#A8E6CF', '#D4B2D8', '#ffffff'] });
-        document.getElementById('tela-inicial').style.display = 'none';
+    }
+
+    document.getElementById('btn-ir-votacao').addEventListener('click', () => {
+        dispararConfetes();
+        esconderTelas();
         document.getElementById('tela-votacao').style.display = 'block';
     });
 
     document.getElementById('btn-ir-recados').addEventListener('click', () => {
-        confetti({ particleCount: 120, spread: 70, origin: { y: 0.6 }, colors: ['#A8E6CF', '#D4B2D8', '#ffffff'] });
-        document.getElementById('tela-inicial').style.display = 'none';
+        dispararConfetes();
+        esconderTelas();
         document.getElementById('tela-recados').style.display = 'block';
     });
 
-    window.voltarAoMenu = function() {
+    document.getElementById('btn-ir-fotos').addEventListener('click', () => {
+        dispararConfetes();
+        esconderTelas();
+        document.getElementById('tela-fotos').style.display = 'block';
+    });
+
+    function esconderTelas() {
+        document.getElementById('tela-inicial').style.display = 'none';
         document.getElementById('tela-votacao').style.display = 'none';
         document.getElementById('tela-recados').style.display = 'none';
+        document.getElementById('tela-fotos').style.display = 'none';
+    }
+
+    window.voltarAoMenu = function() {
+        esconderTelas();
         document.getElementById('tela-inicial').style.display = 'block';
     }
 
+    // ESCUTAR VOTOS E RECADOS
     onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
             const dados = docSnap.data();
@@ -382,19 +382,39 @@
         }
     });
 
-    // FUNÇÃO DE VOTAÇÃO
+    // ESCUTAR FOTOS DO MURAL
+    onSnapshot(fotosRef, (snapshot) => {
+        const listaFotos = document.getElementById('lista-fotos');
+        listaFotos.innerHTML = '';
+        
+        let fotosArray = [];
+        snapshot.forEach(doc => { fotosArray.push(doc.data()); });
+        
+        // Ordena para as fotos mais novas ficarem no topo do feed
+        fotosArray.sort((a, b) => b.timestamp - a.timestamp);
+
+        fotosArray.forEach(foto => {
+            const div = document.createElement('div');
+            div.className = "instax-card";
+            div.innerHTML = `
+                <img src="${foto.base64}">
+                <div class="instax-legenda"><strong>${foto.legenda}</strong></div>
+                <div class="instax-autor">📸 por ${foto.nome}</div>
+            `;
+            listaFotos.appendChild(div);
+        });
+    });
+
+
+    // ==========================================
+    // LÓGICA DE VOTAÇÃO
+    // ==========================================
     async function votar(genero) {
         const nomeInput = document.getElementById('nome-votante').value.trim();
-        
-        if (nomeInput === "") {
-            alert("Por favor, digite seu nome antes de votar!");
-            document.getElementById('nome-votante').focus();
-            return;
-        }
+        if (nomeInput === "") { alert("Digite seu nome antes de votar!"); return; }
 
         document.getElementById('btn-boy').disabled = true;
         document.getElementById('btn-girl').disabled = true;
-
         const msgDiv = document.getElementById('msg-agradecimento');
 
         if (genero === 'meninos') {
@@ -405,46 +425,117 @@
             msgDiv.classList.add('msg-lilas');
         }
 
-        await updateDoc(docRef, {
-            [genero]: increment(1),
-            historico: arrayUnion({ nome: nomeInput, voto: genero })
-        });
+        await updateDoc(docRef, { [genero]: increment(1), historico: arrayUnion({ nome: nomeInput, voto: genero }) });
 
         localStorage.setItem('ja_votou_cha_revelacao', 'sim');
         localStorage.setItem('voto_escolhido', genero);
 
         document.getElementById('area-votacao').style.display = 'none';
         msgDiv.style.display = 'block';
-
-        // Atualiza o botão do menu para "Ver Placar" logo após votar
         document.getElementById('btn-ir-votacao').innerText = "Ver Placar 📜";
     }
 
     document.getElementById('btn-boy').addEventListener('click', () => votar('meninos'));
     document.getElementById('btn-girl').addEventListener('click', () => votar('meninas'));
 
-    // FUNÇÃO DE ENVIAR RECADINHO (Permite vários recados)
+
+    // ==========================================
+    // LÓGICA DE RECADOS
+    // ==========================================
     document.getElementById('btn-enviar-recado').addEventListener('click', async () => {
         const nomeRecardo = document.getElementById('nome-recardo').value.trim();
         const textoRecado = document.getElementById('texto-recado').value.trim();
 
-        if (nomeRecardo === "" || textoRecado === "") {
-            alert("Por favor, preencha seu nome e escreva seu recadinho!");
-            return;
-        }
+        if (nomeRecardo === "" || textoRecado === "") { alert("Preencha seu nome e recadinho!"); return; }
 
-        // Chuva de confetes verdes e lilases
         confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#A8E6CF', '#D4B2D8', '#ffffff'] });
+        await updateDoc(docRef, { recados: arrayUnion({ nome: nomeRecardo, mensagem: textoRecado }) });
 
-        await updateDoc(docRef, {
-            recados: arrayUnion({ nome: nomeRecardo, mensagem: textoRecado })
-        });
-
-        // Limpa apenas o campo da mensagem (permite enviar mais recados com o mesmo nome)
         document.getElementById('texto-recado').value = '';
-        alert("Recadinho enviado com sucesso! ✅​");
+        alert("Recadinho enviado com sucesso! ✅");
     });
 
+
+    // ==========================================
+    // LÓGICA DA CÂMERA INSTAX (COMPRESSÃO MÁGICA)
+    // ==========================================
+    let fotoComprimidaBase64 = "";
+
+    document.getElementById('input-camera').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // Início da "Compressão Mágica"
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const maxSize = 800; // Limita o tamanho para economizar internet
+
+                if (width > height) {
+                    if (width > maxSize) { height *= maxSize / width; width = maxSize; }
+                } else {
+                    if (height > maxSize) { width *= maxSize / height; height = maxSize; }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                // Converte para JPEG com 60% de qualidade (Fica leve e não gasta o servidor!)
+                fotoComprimidaBase64 = canvas.toDataURL('image/jpeg', 0.6);
+                
+                document.getElementById('foto-preview').src = fotoComprimidaBase64;
+                document.getElementById('preview-container').style.display = 'block';
+                document.getElementById('label-camera').style.display = 'none'; // Esconde botão de abrir câmera
+            }
+            img.src = event.target.result;
+        }
+        reader.readAsDataURL(file);
+    });
+
+    document.getElementById('btn-cancelar-foto').addEventListener('click', () => {
+        fotoComprimidaBase64 = "";
+        document.getElementById('input-camera').value = ""; 
+        document.getElementById('preview-container').style.display = 'none';
+        document.getElementById('label-camera').style.display = 'inline-block';
+    });
+
+    document.getElementById('btn-enviar-foto').addEventListener('click', async () => {
+        const nome = document.getElementById('nome-foto').value.trim();
+        const legenda = document.getElementById('legenda-foto').value.trim();
+
+        if (nome === "") { alert("Por favor, digite seu nome!"); return; }
+        if (fotoComprimidaBase64 === "") { alert("Você precisa tirar uma foto primeiro!"); return; }
+
+        document.getElementById('btn-enviar-foto').disabled = true;
+
+        // Salva direto no Firestore em uma coleção separada
+        await addDoc(fotosRef, {
+            nome: nome,
+            legenda: legenda,
+            base64: fotoComprimidaBase64,
+            timestamp: Date.now()
+        });
+
+        confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#A8E6CF', '#D4B2D8', '#ffffff'] });
+
+        // Limpa a tela para a próxima foto
+        document.getElementById('legenda-foto').value = "";
+        document.getElementById('btn-cancelar-foto').click(); 
+        document.getElementById('btn-enviar-foto').disabled = false;
+        
+        alert("Foto postada no mural! 📸✨");
+    });
+
+
+    // ==========================================
+    // FUNÇÃO DE ATUALIZAR PLACAR E RECADOS
+    // ==========================================
     function atualizarDashboard(votosBoy, votosGirl, historico, recados) {
         document.getElementById('count-boy').innerText = votosBoy;
         document.getElementById('count-girl').innerText = votosGirl;
@@ -456,7 +547,6 @@
         document.getElementById('bar-boy').style.width = pctBoy + '%';
         document.getElementById('bar-girl').style.width = pctGirl + '%';
 
-        // Atualiza Lista de Votos
         const listaUl = document.getElementById('lista-nomes');
         listaUl.innerHTML = ''; 
         historico.forEach(item => {
@@ -469,7 +559,6 @@
             listaUl.appendChild(li);
         });
 
-        // Atualiza Mural de Recados
         const listaRecadosUl = document.getElementById('lista-recados');
         listaRecadosUl.innerHTML = '';
         recados.forEach(rec => {
