@@ -313,8 +313,9 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
     
-    const docRef = doc(db, "votacao", "placar_v6");
-    const fotosRef = collection(db, "mural_fotos_v1"); // Coleção separada só para fotos!
+    // NOME DAS PASTAS NO BANCO DE DADOS
+    const docRef = doc(db, "votacao", "placar_v6"); 
+    const fotosRef = collection(db, "mural_fotos_v2"); // <-- MUDEI AQUI DE V1 PARA V2 PARA ZERAR AS FOTOS
 
     async function inicializarBanco() {
         const snap = await getDoc(docRef);
