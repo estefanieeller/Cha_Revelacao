@@ -153,6 +153,7 @@
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
+        
         .historico-votos h3, .historico-recados h3, .mural-fotos h3 { margin-top: 0; font-family: 'Fredoka', sans-serif; text-align: center; color: #333; }
         .historico-votos ul, .historico-recados ul { list-style: none; padding: 0; margin: 0; }
         .historico-votos li, .historico-recados li { padding: 10px; border-bottom: 1px solid rgba(0, 0, 0, 0.1); font-size: 15px; color: #333; }
@@ -188,6 +189,17 @@
         }
         .instax-autor { font-size: 12px; color: #777; margin-top: 5px; }
 
+        /* Estilos da aba de Brincadeiras */
+        .card-brincadeira {
+            margin-top: 20px; background: rgba(255, 255, 255, 0.75); padding: 20px; border-radius: 15px;
+            text-align: center; border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .card-brincadeira h3 { margin-top: 0; font-family: 'Fredoka', sans-serif; color: #333; margin-bottom: 15px;}
+        .card-brincadeira p { font-size: 1.2em; margin: 0;}
+        .btn-mini-pri { background-color: #D4B2D8; color: #5A2D5C; border: none; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-weight: bold; font-size: 14px; margin: 2px;}
+        .btn-mini-diego { background-color: #A8E6CF; color: #2D5A3F; border: none; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-weight: bold; font-size: 14px; margin: 2px;}
+        .btn-mini-pri:active, .btn-mini-diego:active { transform: scale(0.95); }
+
     </style>
 </head>
 <body>
@@ -201,6 +213,8 @@
     <button class="btn btn-entrar" id="btn-ir-votacao">Votar 💚💜</button>
     <button class="btn btn-entrar" id="btn-ir-recados">Recadinhos 💌</button>
     <button class="btn btn-entrar" id="btn-ir-fotos">Fotos 📸</button>
+    <!-- NOVO BOTÃO DAS BRINCADEIRAS -->
+    <button class="btn btn-entrar" id="btn-ir-brincadeiras">Placar das Brincadeiras 🏆</button>
 </div>
 
 <!-- TELA 2: DASHBOARD DE VOTAÇÃO -->
@@ -270,13 +284,11 @@
         <input type="text" id="legenda-foto" class="input-nome" placeholder="Legenda (ex: Lindos!)">
         <br>
         
-        <!-- Botão especial que força a abrir a câmera do celular -->
         <label for="input-camera" class="btn btn-entrar" id="label-camera" style="cursor: pointer; display: inline-block;">
             Abrir Câmera 📷
         </label>
         <input type="file" id="input-camera" accept="image/*" capture="environment" style="display: none;">
         
-        <!-- Área que mostra a foto tirada antes de postar -->
         <div id="preview-container" style="display: none; margin-top: 15px;">
             <div class="instax-card" style="margin: 0 auto;">
                 <img id="foto-preview">
@@ -289,8 +301,68 @@
 
     <div class="mural-fotos">
         <h3>Mural de Fotos</h3>
-        <!-- As fotos vão aparecer centralizadas aqui dentro -->
         <div id="lista-fotos" style="text-align: center; margin-top: 15px;"></div>
+    </div>
+
+    <button class="btn btn-voltar" onclick="voltarAoMenu()">⬅ Voltar ao Menu</button>
+</div>
+
+<!-- TELA 5: BRINCADEIRAS (NOVA ABA) -->
+<div class="container" id="tela-brincadeiras" style="display: none;">
+    <h2>Placar dos Papais 🏆</h2>
+    <p class="subtitle">Acompanhe quem está ganhando os desafios!</p>
+
+    <!-- Botão Secreto do Juiz -->
+    <button class="btn btn-voltar" id="btn-ativar-juiz" style="margin-top: 0; margin-bottom: 10px; background-color: #444; font-size: 13px; padding: 6px 15px;">
+        Modo Juiz 🔐
+    </button>
+
+    <!-- JOGO 1 -->
+    <div class="card-brincadeira">
+        <h3>🥣 1. Corrida da Papinha</h3>
+        <p>Priscila: <strong id="pt-papinha-pri" class="cor-menina">0</strong> | Diego: <strong id="pt-papinha-diego" class="cor-menino">0</strong></p>
+        
+        <!-- Área oculta que só aparece com a senha -->
+        <div class="area-admin" style="display: none; margin-top: 15px;">
+            <button class="btn-mini-pri" onclick="mudarPonto('papinha', 'priscila', -1)">-1 Pri</button>
+            <button class="btn-mini-pri" onclick="mudarPonto('papinha', 'priscila', 1)">+1 Pri</button>
+            &nbsp;|&nbsp;
+            <button class="btn-mini-diego" onclick="mudarPonto('papinha', 'diego', -1)">-1 Diego</button>
+            <button class="btn-mini-diego" onclick="mudarPonto('papinha', 'diego', 1)">+1 Diego</button>
+        </div>
+    </div>
+
+    <!-- JOGO 2 -->
+    <div class="card-brincadeira">
+        <h3>🍼 2. Troca de Fralda</h3>
+        <p>Priscila: <strong id="pt-fralda-pri" class="cor-menina">0</strong> | Diego: <strong id="pt-fralda-diego" class="cor-menino">0</strong></p>
+        
+        <div class="area-admin" style="display: none; margin-top: 15px;">
+            <button class="btn-mini-pri" onclick="mudarPonto('fralda', 'priscila', -1)">-1 Pri</button>
+            <button class="btn-mini-pri" onclick="mudarPonto('fralda', 'priscila', 1)">+1 Pri</button>
+            &nbsp;|&nbsp;
+            <button class="btn-mini-diego" onclick="mudarPonto('fralda', 'diego', -1)">-1 Diego</button>
+            <button class="btn-mini-diego" onclick="mudarPonto('fralda', 'diego', 1)">+1 Diego</button>
+        </div>
+    </div>
+
+    <!-- JOGO 3 -->
+    <div class="card-brincadeira">
+        <h3>🧸 3. Cadê o Bebê?</h3>
+        <p>Priscila: <strong id="pt-bebe-pri" class="cor-menina">0</strong> | Diego: <strong id="pt-bebe-diego" class="cor-menino">0</strong></p>
+        
+        <div class="area-admin" style="display: none; margin-top: 15px;">
+            <button class="btn-mini-pri" onclick="mudarPonto('bebe', 'priscila', -1)">-1 Pri</button>
+            <button class="btn-mini-pri" onclick="mudarPonto('bebe', 'priscila', 1)">+1 Pri</button>
+            &nbsp;|&nbsp;
+            <button class="btn-mini-diego" onclick="mudarPonto('bebe', 'diego', -1)">-1 Diego</button>
+            <button class="btn-mini-diego" onclick="mudarPonto('bebe', 'diego', 1)">+1 Diego</button>
+        </div>
+    </div>
+
+    <div class="results" style="margin-top: 30px; background: rgba(255,255,255,0.7); padding: 15px; border-radius: 15px;">
+        <div class="placar-title">🏆 CAMPEÃO GERAL 🏆</div>
+        <p style="font-size: 1.2em;">Priscila: <strong id="pt-total-pri" class="cor-menina">0</strong> | Diego: <strong id="pt-total-diego" class="cor-menino">0</strong></p>
     </div>
 
     <button class="btn btn-voltar" onclick="voltarAoMenu()">⬅ Voltar ao Menu</button>
@@ -298,7 +370,6 @@
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    // Adicionado "collection" e "addDoc" na importação para suportar o mural de fotos sem travar o banco
     import { getFirestore, doc, onSnapshot, setDoc, updateDoc, increment, getDoc, arrayUnion, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const firebaseConfig = {
@@ -315,12 +386,23 @@
     
     // NOME DAS PASTAS NO BANCO DE DADOS
     const docRef = doc(db, "votacao", "placar_v6"); 
-    const fotosRef = collection(db, "mural_fotos_v2"); // <-- MUDEI AQUI DE V1 PARA V2 PARA ZERAR AS FOTOS
+    const fotosRef = collection(db, "mural_fotos_v2"); 
+    const brincadeirasRef = doc(db, "votacao", "brincadeiras_v1"); // <-- NOVO BANCO PARA BRINCADEIRAS
 
     async function inicializarBanco() {
         const snap = await getDoc(docRef);
         if (!snap.exists()) {
             await setDoc(docRef, { meninos: 0, meninas: 0, historico: [], recados: [] });
+        }
+        
+        // Inicializa o placar de brincadeiras zerado, caso ainda não exista
+        const snapB = await getDoc(brincadeirasRef);
+        if (!snapB.exists()) {
+            await setDoc(brincadeirasRef, {
+                papinha: { priscila: 0, diego: 0 },
+                fralda: { priscila: 0, diego: 0 },
+                bebe: { priscila: 0, diego: 0 }
+            });
         }
     }
     inicializarBanco();
@@ -346,21 +428,19 @@
     }
 
     document.getElementById('btn-ir-votacao').addEventListener('click', () => {
-        dispararConfetes();
-        esconderTelas();
-        document.getElementById('tela-votacao').style.display = 'block';
+        dispararConfetes(); esconderTelas(); document.getElementById('tela-votacao').style.display = 'block';
     });
 
     document.getElementById('btn-ir-recados').addEventListener('click', () => {
-        dispararConfetes();
-        esconderTelas();
-        document.getElementById('tela-recados').style.display = 'block';
+        dispararConfetes(); esconderTelas(); document.getElementById('tela-recados').style.display = 'block';
     });
 
     document.getElementById('btn-ir-fotos').addEventListener('click', () => {
-        dispararConfetes();
-        esconderTelas();
-        document.getElementById('tela-fotos').style.display = 'block';
+        dispararConfetes(); esconderTelas(); document.getElementById('tela-fotos').style.display = 'block';
+    });
+
+    document.getElementById('btn-ir-brincadeiras').addEventListener('click', () => {
+        dispararConfetes(); esconderTelas(); document.getElementById('tela-brincadeiras').style.display = 'block';
     });
 
     function esconderTelas() {
@@ -368,6 +448,7 @@
         document.getElementById('tela-votacao').style.display = 'none';
         document.getElementById('tela-recados').style.display = 'none';
         document.getElementById('tela-fotos').style.display = 'none';
+        document.getElementById('tela-brincadeiras').style.display = 'none';
     }
 
     window.voltarAoMenu = function() {
@@ -375,7 +456,9 @@
         document.getElementById('tela-inicial').style.display = 'block';
     }
 
-    // ESCUTAR VOTOS E RECADOS
+    // ==========================================
+    // ESCUTAR BANCOS (VOTOS, RECADOS E BRINCADEIRAS)
+    // ==========================================
     onSnapshot(docRef, (docSnap) => {
         if (docSnap.exists()) {
             const dados = docSnap.data();
@@ -383,15 +466,19 @@
         }
     });
 
-    // ESCUTAR FOTOS DO MURAL
+    onSnapshot(brincadeirasRef, (docSnap) => {
+        if (docSnap.exists()) {
+            const dados = docSnap.data();
+            atualizarPlacarBrincadeiras(dados);
+        }
+    });
+
     onSnapshot(fotosRef, (snapshot) => {
         const listaFotos = document.getElementById('lista-fotos');
         listaFotos.innerHTML = '';
         
         let fotosArray = [];
         snapshot.forEach(doc => { fotosArray.push(doc.data()); });
-        
-        // Ordena para as fotos mais novas ficarem no topo do feed
         fotosArray.sort((a, b) => b.timestamp - a.timestamp);
 
         fotosArray.forEach(foto => {
@@ -405,6 +492,49 @@
             listaFotos.appendChild(div);
         });
     });
+
+
+    // ==========================================
+    // MODO JUIZ E PONTUAÇÃO DAS BRINCADEIRAS
+    // ==========================================
+    document.getElementById('btn-ativar-juiz').addEventListener('click', () => {
+        const senha = prompt("Digite a senha do Juiz:");
+        if (senha === "DP@CF") {
+            alert("✅ Modo Juiz Ativado! Você pode dar os pontos.");
+            document.getElementById('btn-ativar-juiz').style.display = 'none';
+            // Mostra os botões de controle para quem acertou a senha
+            const areas = document.querySelectorAll('.area-admin');
+            areas.forEach(area => area.style.display = 'block');
+        } else if (senha !== null) {
+            alert("❌ Senha Incorreta!");
+        }
+    });
+
+    // Função para alterar os pontos no Firebase (usada nos botões html)
+    window.mudarPonto = async function(jogo, pessoa, valor) {
+        const caminho = `${jogo}.${pessoa}`; // Ex: "papinha.priscila"
+        await updateDoc(brincadeirasRef, {
+            [caminho]: increment(valor)
+        });
+    }
+
+    function atualizarPlacarBrincadeiras(dados) {
+        document.getElementById('pt-papinha-pri').innerText = dados.papinha.priscila;
+        document.getElementById('pt-papinha-diego').innerText = dados.papinha.diego;
+        
+        document.getElementById('pt-fralda-pri').innerText = dados.fralda.priscila;
+        document.getElementById('pt-fralda-diego').innerText = dados.fralda.diego;
+        
+        document.getElementById('pt-bebe-pri').innerText = dados.bebe.priscila;
+        document.getElementById('pt-bebe-diego').innerText = dados.bebe.diego;
+
+        // Soma total
+        let totalPri = dados.papinha.priscila + dados.fralda.priscila + dados.bebe.priscila;
+        let totalDiego = dados.papinha.diego + dados.fralda.diego + dados.bebe.diego;
+        
+        document.getElementById('pt-total-pri').innerText = totalPri;
+        document.getElementById('pt-total-diego').innerText = totalDiego;
+    }
 
 
     // ==========================================
@@ -458,7 +588,7 @@
 
 
     // ==========================================
-    // LÓGICA DA CÂMERA INSTAX (COMPRESSÃO MÁGICA)
+    // LÓGICA DA CÂMERA INSTAX
     // ==========================================
     let fotoComprimidaBase64 = "";
 
@@ -466,7 +596,6 @@
         const file = e.target.files[0];
         if (!file) return;
 
-        // Início da "Compressão Mágica"
         const reader = new FileReader();
         reader.onload = function(event) {
             const img = new Image();
@@ -474,7 +603,7 @@
                 const canvas = document.createElement('canvas');
                 let width = img.width;
                 let height = img.height;
-                const maxSize = 800; // Limita o tamanho para economizar internet
+                const maxSize = 800; 
 
                 if (width > height) {
                     if (width > maxSize) { height *= maxSize / width; width = maxSize; }
@@ -487,12 +616,11 @@
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
 
-                // Converte para JPEG com 60% de qualidade (Fica leve e não gasta o servidor!)
                 fotoComprimidaBase64 = canvas.toDataURL('image/jpeg', 0.6);
                 
                 document.getElementById('foto-preview').src = fotoComprimidaBase64;
                 document.getElementById('preview-container').style.display = 'block';
-                document.getElementById('label-camera').style.display = 'none'; // Esconde botão de abrir câmera
+                document.getElementById('label-camera').style.display = 'none'; 
             }
             img.src = event.target.result;
         }
@@ -515,7 +643,6 @@
 
         document.getElementById('btn-enviar-foto').disabled = true;
 
-        // Salva direto no Firestore em uma coleção separada
         await addDoc(fotosRef, {
             nome: nome,
             legenda: legenda,
@@ -525,7 +652,6 @@
 
         confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#A8E6CF', '#D4B2D8', '#ffffff'] });
 
-        // Limpa a tela para a próxima foto
         document.getElementById('legenda-foto').value = "";
         document.getElementById('btn-cancelar-foto').click(); 
         document.getElementById('btn-enviar-foto').disabled = false;
@@ -535,7 +661,7 @@
 
 
     // ==========================================
-    // FUNÇÃO DE ATUALIZAR PLACAR E RECADOS
+    // FUNÇÃO DE ATUALIZAR PLACAR PRINCIPAL
     // ==========================================
     function atualizarDashboard(votosBoy, votosGirl, historico, recados) {
         document.getElementById('count-boy').innerText = votosBoy;
