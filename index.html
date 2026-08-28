@@ -1,3 +1,10 @@
+Com certeza! Uma barrinha visual faz toda a diferença para o pessoal sentir a emoção da competição e ver quem está esmagando quem nos desafios! 😂
+
+Coloquei a barra de progresso exatamente abaixo da pontuação do "Campeão Geral". A cor lilás representa a Priscila e fica do lado esquerdo, e a cor verde representa o Diego e fica do lado direito. Assim como no placar principal, se ninguém tiver ponto, ela fica em 50% para cada lado, e vai se mexendo automaticamente conforme o Juiz distribui os pontos.
+
+Aqui está o seu código completo e atualizado com a barrinha visual no placar das brincadeiras:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -363,6 +370,12 @@
     <div class="results" style="margin-top: 30px; background: rgba(255,255,255,0.7); padding: 15px; border-radius: 15px;">
         <div class="placar-title">🏆 CAMPEÃO GERAL 🏆</div>
         <p style="font-size: 1.2em;">Priscila: <strong id="pt-total-pri" class="cor-menina">0</strong> | Diego: <strong id="pt-total-diego" class="cor-menino">0</strong></p>
+        
+        <!-- BARRINHA VISUAL ADICIONADA AQUI -->
+        <div class="bar-container" style="margin-top: 15px;">
+            <div class="bar-girl" id="bar-brincadeira-pri" style="width: 50%;"></div>
+            <div class="bar-boy" id="bar-brincadeira-diego" style="width: 50%;"></div>
+        </div>
     </div>
 
     <button class="btn btn-voltar" onclick="voltarAoMenu()">⬅ Voltar ao Menu</button>
@@ -534,6 +547,14 @@
         
         document.getElementById('pt-total-pri').innerText = totalPri;
         document.getElementById('pt-total-diego').innerText = totalDiego;
+
+        // Lógica da barrinha visual das brincadeiras
+        let totalBrincadeiras = totalPri + totalDiego;
+        let pctPri = totalBrincadeiras === 0 ? 50 : (totalPri / totalBrincadeiras) * 100;
+        let pctDiego = totalBrincadeiras === 0 ? 50 : (totalDiego / totalBrincadeiras) * 100;
+
+        document.getElementById('bar-brincadeira-pri').style.width = pctPri + '%';
+        document.getElementById('bar-brincadeira-diego').style.width = pctDiego + '%';
     }
 
 
@@ -698,3 +719,5 @@
 
 </body>
 </html>
+
+```
