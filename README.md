@@ -28,3 +28,5 @@ Como o projeto é construído em HTML/JS estático com Firebase no frontend, nã
 1. Faça o clone do repositório:
    ```bash
    git clone [https://github.com/seu-usuario/cha-revelacao.git](https://github.com/seu-usuario/cha-revelacao.git)
+
+⚠️ Importante: O arquivo index.html contém as chaves de acesso públicas do Firebase Firestore configuradas para este evento específico. Se você for reutilizar este código para outro projeto, lembre-se de criar o seu próprio projeto no Firebase Console e substituir o objeto firebaseConfig pelas suas credenciais.
